@@ -1,7 +1,9 @@
 # arma3-macvsog-columbia-items
 Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
-This article will provide information on how to create a new arma 3 inventory object from scratch. From an idea into an item that has the shape we want, the weight we chose, the texture we desire and that is available as a mod in order to make it accessible for multiplayer missions.
+- This article will provide information on how to create a new Arma 3 inventory object from scratch. From an idea into an item that has the shape we want, the weight we chose, the texture we desire and that is available as a mod in order to make it accessible for multiplayer missions.
+- I will follow the procedure described in this repository to create new Item for MACV-SOG such as seismic sensor, etc. The result will be a mod compiling all those items. You can find the mod here: https://steamcommunity.com/sharedfiles/filedetails/?id=3332232289
+- If the procedure is wrong/not clear don't hesitate to create an issue and I will gladly update it.
 
 ---
 
