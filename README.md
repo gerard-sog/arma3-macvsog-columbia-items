@@ -52,6 +52,9 @@ This article will provide information on how to create a new arma 3 inventory ob
 <summary>open section</summary>
 
 - Create this folder and file structure anywhere on your computer (this will be our workspace).
+
+![screenshot](/images/Setup/setup.PNG)
+
 - In the above example, a sensor (a seismic sensor used by MACV SOG in order to monitor movement of NVA soldiers) is the new object I want to create. This will be our <u>MAIN folder</u>.
 - <u>data folder</u> will contain the object textures, in .paa format (currently an empty folder).
 - <u>Icons folder</u> will contain the icon for our object, in .paa format (currently an empty folder).
@@ -69,6 +72,9 @@ This article will provide information on how to create a new arma 3 inventory ob
 
 - Create a 3D item in Blender that has the desired shape.
 - At the end of the item creation, make sure it is a single 3D object (top right of blender) and that “Arma Object Property” is selected.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/create3DObject.PNG)
+
 - Pressing CTRL + T will triangulate the 3D objects (make its faces only triangles) and remove any ngons (Arma does not want ngons).
 
 </details>
@@ -83,11 +89,23 @@ This article will provide information on how to create a new arma 3 inventory ob
 
 ## 2.2.1 Work locally on Blender to see how texture is looking
 
-- Create an UV map by selecting the object and clicking on “U”. Making an easy one to work with is sometimes tricky but adding some seams in Blender can help.
+- Create a UV map by selecting the object and clicking on “U”. Making an easy one to work with is sometimes tricky but adding some seams in Blender can help.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/addCustomTexture1.PNG)
+
 - Then export the UV map as a .png (<u>object_uv_map.png</u>), then using any editing software, update the .png to have the texture you want and save it as a new .png (<u>object_texture.png</u>). Keep in mind that the resolution MUST be 512x512.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/addCustomTexture2.PNG)
+
 - Go back to Blender, make sure your object has a default material (not empty) and open the “Shader Editor” (Shift + F3).
 - Right click and add an “Image Texture” with as path, the path of the <u>object_texture.png</u>.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/addCustomTexture3.PNG)
+
 - Then, if you go back to the 3D Viewport you will be able to see the object with the new texture.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/addCustomTexture4.PNG)
+
 - Finally, export the 3D object and .p3d file and save it to a temporary location like “Downloads” or “Desktop”.
 - N.B. The main purpose of adding texture in Blender is to visualise how it will look onto the object and make sure it is looking good.
 
@@ -103,6 +121,8 @@ This article will provide information on how to create a new arma 3 inventory ob
     - Use the TexView 2 (Arma 3 Tools) to convert the .png into a .paa (Use ‘RGBA’ and in the other section use ‘DXT5’).
   - Save the generated <u>object_texture.paa</u> in <u>data folder</u>. This is important because when exporting as a mod, the path to the texture needs to follow this syntax:
     - “yourAddonName\data\yourTexture.paa”
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/addCustomTexture5.PNG)
 
 </details>
 
@@ -127,14 +147,22 @@ This article will provide information on how to create a new arma 3 inventory ob
   - Pixel more white: high points.
 - If needed, you can invert the colors using Colors>Invert.
 - In the Levels dialog:
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps1.PNG)
+
   - Arrange the 3 triangles to correspond to the above picture.
 - Now we can save the new picture (keep in mind that we need to have a resolution of 512x512) and this will give us our <u>detector_bump.png</u>.
 - We need to convert this new png into a normal map. To do this, you can use the following website (if down, will need to find a tutorial on how to create normal map…) https://cpetry.github.io/NormalMap-Online/.
   - Drag and drop your detector_bump.png in the website, and uncheck “Displacement”, “AO” and “Specular”.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps2.PNG)
+
 - Then below the middle picture, rename it to <u>detector_nohq</u> and save.
 - Convert the .png into a .paa (see "2.2.2 Export texture to .paa").
 - Save the generated <u>detector_nohq.paa</u> in the <u>data folder</u>.
 - We now have our normal map <u>detector_nohq.paa</u> and it can be moved to the <u>data folder</u>.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps3.PNG)
 
 </details>
 
@@ -144,14 +172,22 @@ This article will provide information on how to create a new arma 3 inventory ob
 ## 2.3.2 Ambient occlusion map (for shadows)
 
 - Blender can be used to generate the occlusion map.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps4.PNG)
+
 - Go in the render view, with the following setup:
   - Render Engine: Cycle
   - Bake>Bake Type: Ambient Occlusion
 - Select the object and click on the “Bake” button and this will give the following result. 
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps5.PNG)
+
 - In the top left, click on image*>save as, and then save it as <u>detector_as.png</u>. 
 - Convert the .png into a .paa (see "2.2.2 Export texture to .paa"). 
 - Save the generated <u>detector_as.paa</u> in the <u>data folder</u>. 
 - We now have our ambient occlusion map <u>detector_as.paa</u> and it can be moved to the <u>data folder</u>.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps6.PNG)
 
 </details>
 
@@ -162,10 +198,15 @@ This article will provide information on how to create a new arma 3 inventory ob
 
 - N.B. The whitest will mean the more reflective a texture is. The blackest, the less reflective a texture is.
 - To generate the Specular map, I used https://cpetry.github.io/NormalMap-Online/ and selected “Specular” (middle picture and top right) and reduced the strength in order to make the object blacker (less reflective).
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps7.PNG)
+
 - Then below the middle picture, rename it to detector_smdi and save.
 - Convert the .png into a .paa (see "2.2.2 Export texture to .paa").
 - Save the generated <u>detector_smdi.paa</u> in the <u>data folder</u>.
 - We now have our specular map <u>detector_smdi.paa</u> and it can be moved to the <u>data folder</u>.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps8.PNG)
 
 </details>
 
@@ -273,6 +314,9 @@ This article will provide information on how to create a new arma 3 inventory ob
   - <u>detector_as.paa</u>
   - <u>detector_smdi.paa</u>
 - N.B. with a path from the <u>MAIN folder</u> (ex: detector\data\detector_smdi.paa).
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/improveTextureUsingMaps9.PNG)
+
 - We now have our <u>detector.rvmat</u> file.
 
 </details>
@@ -285,6 +329,8 @@ This article will provide information on how to create a new arma 3 inventory ob
 ## 2.4 End result for data folder
 
 - Add the end, you should have 5 files into the <u>data folder</u>.
+
+![screenshot](/images/P3D%20object%20creation%20through%20Blender/endResultForDataFolder.PNG)
 
 </details>
 
@@ -307,7 +353,13 @@ This article will provide information on how to create a new arma 3 inventory ob
 
 - Go back to the Object Builder, select the object (all nodes) and click “E” to open the “Face Properties” menu.
   - In texture, select your .paa texture then click “Apply” and “Ok”.
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/addTextureToArma3Object1.PNG)
+
 - Then in the “material” path (below the “texture” path) put the path to the <u>detector.rvmat</u> (it must be under path “yourObject/data/yourObject.rvmat”)  then click “Apply” and “Ok”.
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/addTextureToArma3Object2.PNG) 
+
 - Save and export as .p3d and save it in the <u>Objects folder</u>.
 
 </details>
@@ -385,7 +437,12 @@ This article will provide information on how to create a new arma 3 inventory ob
   - Binarize.
     - Enable extended logging.
 - Then you can click on PACK (bottom right).
+
+![screenshot](/images/Import%20object%20into%20Arma%203%20using%20Addon%20Builder/addonBuilder.PNG)
+
 - This will generate and save a .pbo file into the specified <u>folder in !Workshop</u>.
+
+![screenshot](/images/Import%20object%20into%20Arma%203%20using%20Addon%20Builder/pbo.PNG)
 
 </details>
 
@@ -395,12 +452,20 @@ This article will provide information on how to create a new arma 3 inventory ob
 <summary>open section</summary>
 
 - Copy the .pbo generated during the previous step and paste it directly into the Addons folder of Arma 3.
+
+![screenshot](/images/Local%20testing%20through%20Addons/pbo.PNG)
+
 - Restart Arma 3 (if it was previously launched), go into the Eden editor and now the object (sensor) will be visible in the arsenal under the magazine section (since in the configuration we are extending the magazine class).
+
+![screenshot](/images/Local%20testing%20through%20Addons/arsenal.PNG)
+
 - You can also run the following line in order to make it spawn into the inventory of the player:
 
     ```
     player addItem “colsog_inv_sensor”;
     ```
+
+![screenshot](/images/Local%20testing%20through%20Addons/addItem.PNG)
 
 </details>
 
@@ -414,8 +479,13 @@ This article will provide information on how to create a new arma 3 inventory ob
   - Mod content: path to the generated folder containing the .pbo file previously generated (see "6. Import object into Arma 3 using Addon Builder").
   - You can fill in other information such as tag, description, etc.
   - Agree with the Steamworks licence and click Publish (or Update if you are updating a previously published mod).
+
+![screenshot](/images/Create%20a%20public%20mod%20using%20Arma%20Tool%20Publisher/publisher.PNG)
+
 - Once successfully uploaded to the Steam workshop, your mod will be available for other to subscribe and then your new object will be able to be used in multiplayer missions.
 - example: https://steamcommunity.com/sharedfiles/filedetails/?id=3332232289
+
+![screenshot](/images/Create%20a%20public%20mod%20using%20Arma%20Tool%20Publisher/rtColumbiaItems.PNG)
 
 </details>
 
