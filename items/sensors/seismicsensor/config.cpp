@@ -1,6 +1,6 @@
 class CfgPatches
 {
-    class detector
+    class seismicsensor 
     {
         units[]={};
         weapons[]={};
@@ -13,15 +13,15 @@ class CfgPatches
 class CfgMagazines
 {
     class CA_Magazine;
-    class colsog_inv_detector: CA_Magazine
+    class colsog_inv_sensor: CA_Magazine
     {
         author = "Gerard";
-        mass = 20;
+        mass = 15;
         scope = 2;
         value = 1;
         displayName = "Seismic sensor";
-        picture = "\detector\icons\detector_icon.paa";
-        model = "\detector\objects\detector.p3d";
+        picture = "\seismicsensor\icons\icon.paa";
+        model = "\seismicsensor\objects\seismicsensor.p3d";
         type = 256;
         count = 1;
         initSpeed = 18;
