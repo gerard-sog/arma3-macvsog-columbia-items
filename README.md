@@ -7,12 +7,6 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
 ---
 
-## Special thanks
-
-- <u>Lukinator</u> (SOG Discord): for helping me build this procedure. 
-- <u>HorribleGoat</u> (Arma Discord): for input about adding actions on objects. 
-- <u>Kay</u> (RT Columbia Discord): for the previous discussions about creating mods and scripting.
-
 ## Requirements
 
 - Blender version 3.6 (versions higher have issues with Arma 3). 
@@ -23,7 +17,7 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
 ---
 
-## Table of contents
+## Procedure
 - [1. Setup](#1-setup)
 - [2. P3D object creation through Blender](#2-p3d-object-creation-through-blender)
   - [2.1 Create 3D Object](#21-create-3d-object)
@@ -537,3 +531,55 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - Will add scripts adding behaviour to a new object we have created in https://github.com/gerard-sog/arma3-macvsog-columbia-scripts . (This part is WIP and currently nothing available, will try to have something for the 30th September 2024).
 
 </details>
+
+---
+
+## Examples
+
+<details>
+<summary>PRC-77 battery</summary>
+
+![screenshot](/images/examples/PRC-77%20battery/real.PNG)
+
+![screenshot](/images/examples/PRC-77%20battery/topView.PNG)
+
+![screenshot](/images/examples/PRC-77%20battery/sideView.PNG)
+
+</details>
+
+<details>
+<summary>Seismic sensor</summary>
+
+Seismic: These sensors contained seismic detectors. That is, they detected movement in the earth -- similar to earthquake detectors -- such as vehicle(s) moving past or footsteps. Seismic devices required a small spike to be driven into the ground; 
+this spike contained the sensing element. If the ground moved, the sensing element moved and activated a radio transmitter that transmitted a beep, alerting the monitor to the fact that something was moving near the sensor location.
+
+![screenshot](/images/examples/Seismic%20Sensor/real.PNG)
+
+![screenshot](/images/examples/Seismic%20Sensor/frontView.PNG)
+
+![screenshot](/images/examples/Seismic%20Sensor/sideView.PNG)
+
+</details>
+
+<details>
+<summary>The Handsid (Placed on the Ground by Foot Soldiers)</summary>
+
+The initial sensor program was called PRACTICE NINE until 14 June 1967, ILLINOIS CITY until 15 July 1967, and DYE MARKER until 8 September 1967, when MUSCLE SHOALS was adopted to indicate the air-supported subsystem in eastern and central Laos. 
+In June 1968, the program was renamed IGLOO WHITE and consisted of three components: (1) munitions and sensing devices which were placed across and along suspected routes of infiltration to detect and impede enemy foot or vehicular movement; 
+(2) orbiting aircraft which received signals from these sensors, amplified them, and retransmitted them; and (3) an Infiltration Surveillance Center (ISC) which received the transmitted signals from the aircraft and analyzed them to produce reliable tactical information for planning and interdiction operations.
+
+![screenshot](/images/examples/The%20Handsid/real.PNG)
+
+![screenshot](/images/examples/The%20Handsid/sideView1.PNG)
+
+![screenshot](/images/examples/The%20Handsid/sideView2.PNG)
+
+</details>
+
+---
+
+## Special thanks
+
+- <u>Lukinator</u> (SOG Discord): for helping me build this procedure.
+- <u>HorribleGoat</u> (Arma Discord): for input about adding actions on objects.
+- <u>Kay</u> (RT Columbia Discord): for the previous discussions about creating mods and scripting.
