@@ -43,6 +43,9 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - [5. Create the configuration for the object](#5-create-the-configuration-for-the-object)
 - [6. Import object into Arma 3 using Addon Builder](#6-import-object-into-arma-3-using-addon-builder)
 - [7. Local testing through Addons](#7-local-testing-through-addons)
+  - [7.1 Testing locally](#71-testing-locally)
+  - [7.2 Possible issues and how to fix them](#72-possible-issues-and-how-to-fix-them)
+    - [7.2.1 Texture are reversed](#721-texture-are-reversed)
 - [8. Create a public mod using Arma Tool Publisher](#8-create-a-public-mod-using-arma-tool-publisher)
 - [9. Add custom actions on object](#9-add-custom-actions-on-object)
 
@@ -453,6 +456,8 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 <details>
 <summary>7.1 Testing locally</summary>
 
+## 7.1 Testing locally
+
 - Copy the .pbo generated during the previous step and paste it directly into the Addons folder of Arma 3.
 
 ![screenshot](/images/Local%20testing%20through%20Addons/pbo.PNG)
@@ -475,8 +480,12 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 <details>
 <summary>7.2 Possible issues and how to fix them</summary>
 
+## 7.2 Possible issues and how to fix them
+
 <details>
-<summary>7.2.1 Texture are reversed ?!</summary>
+<summary>7.2.1 Texture are reversed</summary>
+
+## 7.2.1 Texture are reversed
   
   - If you see that texture are reversed in-game there is a simple way to fix that issue.
 
