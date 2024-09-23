@@ -7,12 +7,6 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
 ---
 
-## Special thanks
-
-- <u>Lukinator</u> (SOG Discord): for helping me build this procedure. 
-- <u>HorribleGoat</u> (Arma Discord): for input about adding actions on objects. 
-- <u>Kay</u> (RT Columbia Discord): for the previous discussions about creating mods and scripting.
-
 ## Requirements
 
 - Blender version 3.6 (versions higher have issues with Arma 3). 
@@ -23,7 +17,7 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
 ---
 
-## Table of contents
+## Procedure
 - [1. Setup](#1-setup)
 - [2. P3D object creation through Blender](#2-p3d-object-creation-through-blender)
   - [2.1 Create 3D Object](#21-create-3d-object)
@@ -43,6 +37,9 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - [5. Create the configuration for the object](#5-create-the-configuration-for-the-object)
 - [6. Import object into Arma 3 using Addon Builder](#6-import-object-into-arma-3-using-addon-builder)
 - [7. Local testing through Addons](#7-local-testing-through-addons)
+  - [7.1 Testing locally](#71-testing-locally)
+  - [7.2 Possible issues and how to fix them](#72-possible-issues-and-how-to-fix-them)
+    - [7.2.1 Texture are reversed](#721-texture-are-reversed)
 - [8. Create a public mod using Arma Tool Publisher](#8-create-a-public-mod-using-arma-tool-publisher)
 - [9. Add custom actions on object](#9-add-custom-actions-on-object)
 
@@ -451,13 +448,16 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 ## 7. Local testing through Addons
 
 <details>
-<summary>open section</summary>
+<summary>7.1 Testing locally</summary>
+
+## 7.1 Testing locally
 
 - Copy the .pbo generated during the previous step and paste it directly into the Addons folder of Arma 3.
 
 ![screenshot](/images/Local%20testing%20through%20Addons/pbo.PNG)
 
 - Restart Arma 3 (if it was previously launched), go into the Eden editor and now the object (sensor) will be visible in the arsenal under the magazine section (since in the configuration we are extending the magazine class).
+
 
 ![screenshot](/images/Local%20testing%20through%20Addons/arsenal.PNG)
 
@@ -468,6 +468,36 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
     ```
 
 ![screenshot](/images/Local%20testing%20through%20Addons/addItem.PNG)
+
+</details>
+
+<details>
+<summary>7.2 Possible issues and how to fix them</summary>
+
+## 7.2 Possible issues and how to fix them
+
+<details>
+<summary>7.2.1 Texture are reversed</summary>
+
+## 7.2.1 Texture are reversed
+  
+  - If you see that texture are reversed in-game there is a simple way to fix that issue.
+
+![screenshot](/images/Local%20testing%20through%20Addons/textureAreReversed.PNG)
+
+  - Open the .p3d object in the object folder:
+  - Select all the nodes.
+  - In the top left, select 'Faces\Reverse'.
+
+![screenshot](/images/Local%20testing%20through%20Addons/facesReverse.PNG)
+  
+  - Save as .p3d and override the object in the object folder.
+  - Continue from Step 6.
+    - fixed result:
+
+![screenshot](/images/Local%20testing%20through%20Addons/fixedTexture.jpg)
+
+</details>
 
 </details>
 
@@ -501,3 +531,55 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - Will add scripts adding behaviour to a new object we have created in https://github.com/gerard-sog/arma3-macvsog-columbia-scripts . (This part is WIP and currently nothing available, will try to have something for the 30th September 2024).
 
 </details>
+
+---
+
+## Examples
+
+<details>
+<summary>PRC-77 battery</summary>
+
+![screenshot](/images/examples/PRC-77%20battery/real.PNG)
+
+![screenshot](/images/examples/PRC-77%20battery/topView.PNG)
+
+![screenshot](/images/examples/PRC-77%20battery/sideView.PNG)
+
+</details>
+
+<details>
+<summary>Seismic sensor</summary>
+
+Seismic: These sensors contained seismic detectors. That is, they detected movement in the earth -- similar to earthquake detectors -- such as vehicle(s) moving past or footsteps. Seismic devices required a small spike to be driven into the ground; 
+this spike contained the sensing element. If the ground moved, the sensing element moved and activated a radio transmitter that transmitted a beep, alerting the monitor to the fact that something was moving near the sensor location.
+
+![screenshot](/images/examples/Seismic%20Sensor/real.PNG)
+
+![screenshot](/images/examples/Seismic%20Sensor/frontView.PNG)
+
+![screenshot](/images/examples/Seismic%20Sensor/sideView.PNG)
+
+</details>
+
+<details>
+<summary>The Handsid (Placed on the Ground by Foot Soldiers)</summary>
+
+The initial sensor program was called PRACTICE NINE until 14 June 1967, ILLINOIS CITY until 15 July 1967, and DYE MARKER until 8 September 1967, when MUSCLE SHOALS was adopted to indicate the air-supported subsystem in eastern and central Laos. 
+In June 1968, the program was renamed IGLOO WHITE and consisted of three components: (1) munitions and sensing devices which were placed across and along suspected routes of infiltration to detect and impede enemy foot or vehicular movement; 
+(2) orbiting aircraft which received signals from these sensors, amplified them, and retransmitted them; and (3) an Infiltration Surveillance Center (ISC) which received the transmitted signals from the aircraft and analyzed them to produce reliable tactical information for planning and interdiction operations.
+
+![screenshot](/images/examples/The%20Handsid/real.PNG)
+
+![screenshot](/images/examples/The%20Handsid/sideView1.PNG)
+
+![screenshot](/images/examples/The%20Handsid/sideView2.PNG)
+
+</details>
+
+---
+
+## Special thanks
+
+- <u>Lukinator</u> (SOG Discord): for helping me build this procedure.
+- <u>HorribleGoat</u> (Arma Discord): for input about adding actions on objects.
+- <u>Kay</u> (RT Columbia Discord): for the previous discussions about creating mods and scripting.
