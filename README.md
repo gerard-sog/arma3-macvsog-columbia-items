@@ -451,13 +451,14 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 ## 7. Local testing through Addons
 
 <details>
-<summary>open section</summary>
+<summary>7.1 Testing locally</summary>
 
 - Copy the .pbo generated during the previous step and paste it directly into the Addons folder of Arma 3.
 
 ![screenshot](/images/Local%20testing%20through%20Addons/pbo.PNG)
 
 - Restart Arma 3 (if it was previously launched), go into the Eden editor and now the object (sensor) will be visible in the arsenal under the magazine section (since in the configuration we are extending the magazine class).
+
 
 ![screenshot](/images/Local%20testing%20through%20Addons/arsenal.PNG)
 
@@ -468,6 +469,32 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
     ```
 
 ![screenshot](/images/Local%20testing%20through%20Addons/addItem.PNG)
+
+</details>
+
+<details>
+<summary>7.2 Possible issues and how to fix them</summary>
+
+<details>
+<summary>7.2.1 Texture are reversed ?!</summary>
+  
+  - If you see that texture are reversed in-game there is a simple way to fix that issue.
+
+![screenshot](/images/Local%20testing%20through%20Addons/textureAreReversed.PNG)
+
+  - Open the .p3d object in the object folder:
+  - Select all the nodes.
+  - In the top left, select 'Faces\Reverse'.
+
+![screenshot](/images/Local%20testing%20through%20Addons/facesReverse.PNG)
+  
+  - Save as .p3d and override the object in the object folder.
+  - Continue from Step 6.
+    - fixed result:
+
+![screenshot](/images/Local%20testing%20through%20Addons/fixedTexture.jpg)
+
+</details>
 
 </details>
 
