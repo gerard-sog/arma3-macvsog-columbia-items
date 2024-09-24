@@ -627,6 +627,7 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
   ```
 
 - Then, follow same steps as section 8.1 in order to publish the new mod with the multiple items inside of it.
+- final result see [3 items in a single mod](https://github.com/gerard-sog/arma3-macvsog-columbia-items/tree/main/combined%20items/rtcolumbiaitems)
 
 </details>
 
