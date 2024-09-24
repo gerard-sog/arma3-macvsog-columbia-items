@@ -41,6 +41,8 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
   - [7.2 Possible issues and how to fix them](#72-possible-issues-and-how-to-fix-them)
     - [7.2.1 Texture are reversed](#721-texture-are-reversed)
 - [8. Create a public mod using Arma Tool Publisher](#8-create-a-public-mod-using-arma-tool-publisher)
+  - [8.1 One single item inside a public mod](#81-one-single-item-inside-a-public-mod)
+  - [8.2 Multiple items inside a public mod](#82-multiple-items-inside-a-public-mod)
 - [9. Add custom actions on object](#9-add-custom-actions-on-object)
 
 ---
@@ -504,7 +506,9 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 ## 8. Create a public mod using Arma Tool Publisher
 
 <details>
-<summary>open section</summary>
+<summary>8.1 One single item inside a public mod</summary>
+
+## 8.1 One single item inside a public mod
 
 - We need to create a mod with our new object in order to make it available during multiplayer missions.
 - Open Arma 3 Tool Publisher.
@@ -518,6 +522,111 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - example: https://steamcommunity.com/sharedfiles/filedetails/?id=3332232289
 
 ![screenshot](/images/Create%20a%20public%20mod%20using%20Arma%20Tool%20Publisher/rtColumbiaItems.PNG)
+
+</details>
+
+<details>
+<summary>8.2 Multiple items inside a public mod</summary>
+
+## 8.2 Multiple items inside a public mod
+
+- The steps are the same as in section 8.1 but there are some differences: the different sub-folders will be merged and the configuration files updated.
+- <u>data folder</u> will contain all files for the various items (in my example we want to have 3 items in a single mod).
+
+![screenshot](/images/Create%20a%20public%20mod%20using%20Arma%20Tool%20Publisher/combinedDataFolder.PNG)
+
+- Make sure that in all .rvmat files, the path to .paa are correct.
+
+  ```
+  texture="rtcolumbiaitems\data\prc77battery_nohq.paa";
+  ```
+
+- <u>Icons folder</u> will contain the different icons and thus need different names.
+
+![screenshot](/images/Create%20a%20public%20mod%20using%20Arma%20Tool%20Publisher/combinedIcons.PNG)
+
+- <u>Objects folder</u> will contain the 3D object in .p3d format (currently an empty folder).
+  - Make sure path to .paa texture and .rvmat is correct in the "Arma Object Builder". 
+    - Else:
+      - open the Arma Object Builder
+      - Update the path to .paa and .rvmat
+      - Save as .p3d and override old .p3d objects.
+
+![screenshot](/images/Create%20a%20public%20mod%20using%20Arma%20Tool%20Publisher/combinedObjects.PNG)
+
+- <u>Config.cpp file</u> Needs to be updated to contain the information related to the 3 items.
+
+  ```
+  class CfgPatches
+  {
+      class rtcolumbiaitems 
+      {
+          units[]={};
+          weapons[]={};
+          requiredVersion=0.1;
+          requiredAddons[]={"A3_Characters_F"};
+      }
+  }
+  
+  
+  class CfgMagazines
+  {
+      class CA_Magazine;
+      class colsog_inv_handsid_sensor: CA_Magazine
+      {
+          author = "Gerard";
+          mass = 100;
+          scope = 2;
+          value = 1;
+          displayName = "Handsid sensor";
+          picture = "\rtcolumbiaitems\icons\iconHandsidSensor.paa";
+          model = "\rtcolumbiaitems\objects\handsidsensor.p3d";
+          type = 256;
+          count = 1;
+          initSpeed = 18;
+          nameSound = "handgrenade";
+          maxLeadSpeed = 6.94444;
+          descriptionShort = "Handsid sensor";
+          displayNameShort = "Handsid sensor";
+      };
+      class colsog_inv_prc77_battery: CA_Magazine
+      {
+          author = "Gerard";
+          mass = 44;
+          scope = 2;
+          value = 1;
+          displayName = "PRC-77 Battery";
+          picture = "\rtcolumbiaitems\icons\iconPrc77Battery.paa";
+          model = "\rtcolumbiaitems\objects\prc77battery.p3d";
+          type = 256;
+          count = 1;
+          initSpeed = 18;
+          nameSound = "handgrenade";
+          maxLeadSpeed = 6.94444;
+          descriptionShort = "PRC-77 Battery";
+          displayNameShort = "PRC-77 Battery";
+      };
+      class colsog_inv_sensor: CA_Magazine
+      {
+          author = "Gerard";
+          mass = 15;
+          scope = 2;
+          value = 1;
+          displayName = "Seismic sensor";
+          picture = "\rtcolumbiaitems\icons\iconSeismicSensor.paa";
+          model = "\rtcolumbiaitems\objects\seismicsensor.p3d";
+          type = 256;
+          count = 1;
+          initSpeed = 18;
+          nameSound = "handgrenade";
+          maxLeadSpeed = 6.94444;
+          descriptionShort = "Seismic sensor";
+          displayNameShort = "Seismic sensor";
+      };
+  };
+  ```
+
+- Then, follow same steps as section 8.1 in order to publish the new mod with the multiple items inside of it.
 
 </details>
 
