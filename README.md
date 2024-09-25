@@ -496,19 +496,21 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
   ```
   class CfgVehicles 
   {
-      class Static;
-      class colsog_static_sensor : Static  
+      class Thing;
+      class colsog_thing_handsid_sensor : Thing  
       {
           access = 0;
           scope = 2;
-          model = "\sensor\objects\sensor.p3d";
-          displayName = "Seismic sensor";
+          model = "\handsidsensor\objects\handsidsensor.p3d";
+          displayName = "Handsid sensor";
           faction = "Default";
           vehicleClass = "Objects";
           simulation = "thing";
           scopecurator = 2;
+          author = "Gerard";
+          destrType = "DestructNo";
       };
-  }; 
+  };
   ```
 
 - This object will allow us to add actions on it such as ACE actions or regular Arma actions.
