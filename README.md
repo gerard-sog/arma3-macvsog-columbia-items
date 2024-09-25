@@ -619,6 +619,8 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
 </details>
 
+</details>
+
 ## 8. Create a public mod using Arma Tool Publisher
 
 <details>
