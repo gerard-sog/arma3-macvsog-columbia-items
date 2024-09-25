@@ -33,7 +33,7 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - [3. Blender P3D to Arma P3D through Object Builder](#3-blender-p3d-to-arma-p3d-through-object-builder)
   - [3.1 Detect object components](#31-detect-object-components)
   - [3.2 Add texture to Arma 3 object](#32-add-texture-to-arma-3-object)
-  - [3.3 3.3 (Optional) Adding more LODs](#33-optional-adding-more-lods)
+  - [3.3 3 (Optional) Adding more LODs](#33-optional-adding-more-lods)
 - [4. Create an icon for our inventory object](#4-create-an-icon-for-our-inventory-object)
 - [5. Create the configuration](#5-create-the-configuration)
   - [5.1 Create the configuration for the object](#51-create-the-configuration-for-the-object)
@@ -45,7 +45,6 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
     - [7.2.1 Texture are reversed](#721-texture-are-reversed)
   - [7.3 Testing locally addAction on static item](#73-testing-locally-addaction-on-static-item)
       - [7.3.1 AddAction script on static item](#731-addaction-script-on-static-item)
-      - [7.3.2 Glitching and Blinking static item](#732-glitching-and-blinking-static-item)
 - [8. Create a public mod using Arma Tool Publisher](#8-create-a-public-mod-using-arma-tool-publisher)
   - [8.1 One single item inside a public mod](#81-one-single-item-inside-a-public-mod)
   - [8.2 Multiple items inside a public mod](#82-multiple-items-inside-a-public-mod)
@@ -609,7 +608,7 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
   ```
   private _pos = getPosATL player; 
-  private _sensor = "colsog_static_handsid_sensor" createVehicle _pos;
+  private _sensor = "colsog_thing_handsid_sensor" createVehicle _pos;
    
   [_sensor, ["Greetings!", { hint "Hello!"; }]] remoteExec ["addAction"];
   ```
@@ -617,22 +616,6 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 ![screenshot](/images/Local%20testing%20through%20Addons/customActionScript.PNG)
 
 ![screenshot](/images/Local%20testing%20through%20Addons/customActionVisible.PNG)
-
-
-</details>
-
-<details>
-<summary>7.3.2 Glitching and Blinking static item</summary>
-
-## 7.3.2 Glitching and Blinking static item
-
-- However, an error is showing when executing the script (the first time) and there is a bug for static item where if 2 same static items are visible in the FOV of the player, they will visually blink/glitch depending on the angle of view towards those items.
-
-![screenshot](/images/Local%20testing%20through%20Addons/error.PNG)
-
-![screenshot](/images/Local%20testing%20through%20Addons/glitch.PNG)
-
-</details>
 
 </details>
 
