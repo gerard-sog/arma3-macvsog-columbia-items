@@ -9,7 +9,6 @@ class CfgPatches
     }
 }
 
-
 class CfgMagazines
 {
     class CA_Magazine;
@@ -63,5 +62,36 @@ class CfgMagazines
         maxLeadSpeed = 6.94444;
         descriptionShort = "Seismic sensor";
         displayNameShort = "Seismic sensor";
+    };
+};
+
+class CfgVehicles 
+{
+    class Thing;
+    class colsog_thing_handsid_sensor : Thing  
+    {
+        access = 0;
+        scope = 2;
+        model = "\rtcolumbiaitems\objects\handsidsensor.p3d";
+        displayName = "Handsid sensor";
+        faction = "Default";
+        vehicleClass = "Objects";
+        simulation = "thing";
+        scopecurator = 2;
+        author = "Gerard";
+        destrType = "DestructNo";
+    };
+    class colsog_thing_sensor : Thing  
+    {
+        access = 0;
+        scope = 2;
+        model = "\rtcolumbiaitems\objects\seismicsensor.p3d";
+        displayName = "Seismic sensor";
+        faction = "Default";
+        vehicleClass = "Objects";
+        simulation = "thing";
+        scopecurator = 2;
+        author = "Gerard";
+        destrType = "DestructNo";
     };
 };
