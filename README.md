@@ -33,13 +33,19 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - [3. Blender P3D to Arma P3D through Object Builder](#3-blender-p3d-to-arma-p3d-through-object-builder)
   - [3.1 Detect object components](#31-detect-object-components)
   - [3.2 Add texture to Arma 3 object](#32-add-texture-to-arma-3-object)
+  - [3.3 3.3 (Optional) Adding more LODs](#33-optional-adding-more-lods)
 - [4. Create an icon for our inventory object](#4-create-an-icon-for-our-inventory-object)
-- [5. Create the configuration for the object](#5-create-the-configuration-for-the-object)
+- [5. Create the configuration](#5-create-the-configuration)
+  - [5.1 Create the configuration for the object](#51-create-the-configuration-for-the-object)
+  - [5.2 (Optional) extra configuration to create a Thing object required for addAction method](#52-optional-extra-configuration-to-create-a-thing-object-required-for-addaction-method)
 - [6. Import object into Arma 3 using Addon Builder](#6-import-object-into-arma-3-using-addon-builder)
 - [7. Local testing through Addons](#7-local-testing-through-addons)
   - [7.1 Testing locally](#71-testing-locally)
   - [7.2 Possible issues and how to fix them](#72-possible-issues-and-how-to-fix-them)
     - [7.2.1 Texture are reversed](#721-texture-are-reversed)
+  - [7.3 Testing locally addAction on static item](#73-testing-locally-addaction-on-static-item)
+      - [7.3.1 AddAction script on static item](#731-addaction-script-on-static-item)
+      - [7.3.2 Glitching and Blinking static item](#732-glitching-and-blinking-static-item)
 - [8. Create a public mod using Arma Tool Publisher](#8-create-a-public-mod-using-arma-tool-publisher)
   - [8.1 One single item inside a public mod](#81-one-single-item-inside-a-public-mod)
   - [8.2 Multiple items inside a public mod](#82-multiple-items-inside-a-public-mod)
@@ -365,6 +371,57 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 
 </details>
 
+<details>
+<summary>3.3 (Optional) Adding more LODs</summary>
+
+## 3.3 (Optional) Adding more LODs
+
+<b><u>OPTIONAL: ONLY FOLLOW THIS STEP IF YOU WANT TO ADD ACTION ON THE ITEM.</u></b>
+
+- If you want to be able to add scripts onto the object through 'addAction' then we need to add 3 extra types of LODs (see https://community.bistudio.com/wiki/LOD#Roadway):
+  - <b>Geometry</b>:
+    - Defines where the model will collide with other objects. Should be very simple, and has to fulfill the following criteria in order to work:
+      - Object must be named ComponentXX (where XX is a consecutive number between 01 and 2048 (a limit in earlier games might have been 99). 
+      - Must have 'Mass' (Alt-M). A minimum of 10 is required for character collision. 
+      - Must be closed and convex. Always validate your Geometry LOD. (Validating Geometries)
+      - Some object types require that every component must have some mass assigned in order to work properly. Does not apply to vehicles It must be smaller than the size limit.
+  - <b>View Geometry</b>:
+    - The visible geometry of the model.
+    - As an example: If you have an object with this LOD properly configured, you will not be able to spot other units through the model. AI will not be able to spot other units through the model. If this LOD is not present the Geometry LOD will be used instead.
+  - <b>Fire Geometry</b>:
+    - Defines where the model will collide with bullets & rockets. If this LOD is not present the ViewGeometry LOD will be used instead. If the ViewGeo LOD is not present either then Geometry LOD will be used instead. Should be simplified as much as possible, but can be a bit more complex then Geometry or Geometry Phys:
+      - Object must be named ComponentXX (where XX is a consecutive number between 01 and 2000). (see Geometry LOD)
+      - Must be closed and convex (see: Validating Geometries).
+
+- Open the .p3d file in Arma Object Builder.
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/armaObjectBuidler.PNG)
+
+- Select all nodes (Ctrl + A), click on '1.000' in the top right, duplicate. Then on the '2.000' that was created, property and select 'Geometry'.
+- Under the 'Component01', right click and create a new component named 'Component02'.
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/geometry.PNG)
+
+- In the top left, select 'Create' and create a 'Box' that will contain the object.
+- Delete the initial object.
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/geometry2.PNG)
+
+- Select the box (Ctrl + A) and add mass (bottom lef).
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/geometry3.PNG)
+
+- Select the 'Geometry' LOD, duplicate it, remove the weight. Then go into properties of the new LOD and select 'View Geometry'. Duplicate the 'View Geometry LOD' and create a 'Fire Geometry' LOD.
+
+![screenshot](/images/Blender%20P3D%20to%20Arma%20P3D%20through%20Object%20Builder/geometry4.PNG)
+
+- Then for each new LOD ('Geometry', 'View Geometry' and 'Fire Geometry'):
+  - Double-click on them (in order to edit them).
+  - Select the entire cube (Ctrl + A) go into “structure/topology/find components”. <b><u>EXTREMELY IMPORTANT AND EASY STEP TO MISS!</u></b>
+
+- Finally, save as .p3d and override previous .p3d.
+
+</details>
 
 ## 4. Create an icon for our inventory object
 
@@ -377,10 +434,12 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - Move the generated .paa file into the Icons folder.
 </details>
 
-## 5. Create the configuration for the object
+## 5. Create the configuration
 
 <details>
-<summary>open section</summary>
+<summary>5.1 Create the configuration for the object</summary>
+
+## 5.1 Create the configuration for the object
 
 - Open and edit the <u>config.cpp file</u> and paste the below content into it:
 
@@ -423,6 +482,37 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
 - ‘Picture’ needs to point to the icon .paa previously generated (with path from <u>MAIN folder</u>).
 - ‘Model’ needs to point to the icon .p3d previously generated (with path from <u>MAIN folder</u>).
 
+</details>
+
+<details>
+<summary>5.2 (Optional) extra configuration to create a Thing object required for addAction method</summary>
+
+## 5.2 (Optional) extra configuration to create a Thing object required for addAction method
+
+<b><u>OPTIONAL: ONLY FOLLOW THIS STEP IF YOU WANT TO ADD ACTION ON THE ITEM.</u></b>
+
+- Open and edit the <u>config.cpp file</u> to add the below extra content. This will create a 'Thing' object with same 3D model as the magazine object:
+
+  ```
+  class CfgVehicles 
+  {
+      class Static;
+      class colsog_static_sensor : Static  
+      {
+          access = 0;
+          scope = 2;
+          model = "\sensor\objects\sensor.p3d";
+          displayName = "Seismic sensor";
+          faction = "Default";
+          vehicleClass = "Objects";
+          simulation = "thing";
+          scopecurator = 2;
+      };
+  }; 
+  ```
+
+- This object will allow us to add actions on it such as ACE actions or regular Arma actions.
+- (example: If 'colsog_inv_sensor' magazine item present in player inventory, action to drop and activate sensor. Then the script deletes magazine item from player's inventory and spawn a new 'colsog_static_sensor' static object and the action can be added on this static object. Required because action not possible to add on magazine items).
 </details>
 
 ## 6. Import object into Arma 3 using Addon Builder
@@ -498,6 +588,47 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
     - fixed result:
 
 ![screenshot](/images/Local%20testing%20through%20Addons/fixedTexture.jpg)
+
+</details>
+
+</details>
+
+<details>
+<summary>7.3 Testing locally addAction on static item</summary>
+
+## 7.3 Testing locally addAction on static item
+
+<details>
+<summary>7.3.1 AddAction script on static item</summary>
+
+## 7.3.1 AddAction script on static item
+
+- You can use the below script and executed in a mission. This will make the static item spawn and add a custom action on it. If this work, you will be able to add custom actions/scripts on it.
+
+  ```
+  private _pos = getPosATL player; 
+  private _sensor = "colsog_static_handsid_sensor" createVehicle _pos;
+   
+  [_sensor, ["Greetings!", { hint "Hello!"; }]] remoteExec ["addAction"];
+  ```
+
+![screenshot](/images/Local%20testing%20through%20Addons/customActionScript.PNG)
+
+![screenshot](/images/Local%20testing%20through%20Addons/customActionVisible.PNG)
+
+
+</details>
+
+<details>
+<summary>7.3.2 Glitching and Blinking static item</summary>
+
+## 7.3.2 Glitching and Blinking static item
+
+- However, an error is showing when executing the script (the first time) and there is a bug for static item where if 2 same static items are visible in the FOV of the player, they will visually blink/glitch depending on the angle of view towards those items.
+
+![screenshot](/images/Local%20testing%20through%20Addons/error.PNG)
+
+![screenshot](/images/Local%20testing%20through%20Addons/glitch.PNG)
 
 </details>
 
@@ -627,7 +758,7 @@ Arma3 MACV-SOG Columbia - Object and Procedure for object creation
   ```
 
 - Then, follow same steps as section 8.1 in order to publish the new mod with the multiple items inside of it.
-- final result see [3 items in a single mod](https://github.com/gerard-sog/arma3-macvsog-columbia-items/tree/main/combined%20items/rtcolumbiaitems)
+- final result see [3 items in a single mod](https://github.com/gerard-sog/arma3-macvsog-columbia-items/tree/main/combined-items/rtcolumbiaitems)
 
 </details>
 
