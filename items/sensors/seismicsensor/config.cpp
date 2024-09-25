@@ -31,3 +31,21 @@ class CfgMagazines
         displayNameShort = "Seismic sensor";
     };
 };
+
+class CfgVehicles 
+{
+    class Thing;
+    class colsog_thing_sensor : Thing  
+    {
+        access = 0;
+        scope = 2;
+        model = "\seismicsensor\objects\seismicsensor.p3d";
+        displayName = "Seismic sensor";
+        faction = "Default";
+        vehicleClass = "Objects";
+        simulation = "thing";
+        scopecurator = 2;
+        author = "Gerard";
+        destrType = "DestructNo";
+    };
+};
