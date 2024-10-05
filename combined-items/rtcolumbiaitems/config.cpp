@@ -32,7 +32,7 @@ class CfgMagazines
     class colsog_inv_prc77_battery: CA_Magazine
     {
         author = "Gerard";
-        mass = 44;
+        mass = 30;
         scope = 2;
         value = 1;
         displayName = "PRC-77 Battery";
@@ -63,6 +63,23 @@ class CfgMagazines
         descriptionShort = "Seismic sensor";
         displayNameShort = "Seismic sensor";
     };
+    class colsog_inv_gravity_sensor: CA_Magazine
+    {
+        author = "Gerard";
+        mass = 80;
+        scope = 2;
+        value = 1;
+        displayName = "Gravity sensor";
+        picture = "\rtcolumbiaitems\icons\iconGravitySensor.paa";
+        model = "\rtcolumbiaitems\objects\gravitysensor.p3d";
+        type = 256;
+        count = 1;
+        initSpeed = 18;
+        nameSound = "handgrenade";
+        maxLeadSpeed = 6.94444;
+        descriptionShort = "Gravity sensor";
+        displayNameShort = "Gravity sensor";
+    };
 };
 
 class CfgVehicles 
@@ -87,6 +104,19 @@ class CfgVehicles
         scope = 2;
         model = "\rtcolumbiaitems\objects\seismicsensor.p3d";
         displayName = "Seismic sensor";
+        faction = "Default";
+        vehicleClass = "Objects";
+        simulation = "thing";
+        scopecurator = 2;
+        author = "Gerard";
+        destrType = "DestructNo";
+    };
+    class colsog_thing_gravity_sensor : Thing  
+    {
+        access = 0;
+        scope = 2;
+        model = "\rtcolumbiaitems\objects\gravitysensor.p3d";
+        displayName = "Gravity sensor";
         faction = "Default";
         vehicleClass = "Objects";
         simulation = "thing";
